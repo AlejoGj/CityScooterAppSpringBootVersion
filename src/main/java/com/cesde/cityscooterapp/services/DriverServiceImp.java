@@ -30,7 +30,15 @@ public class DriverServiceImp implements DriverService {
     }
 
     @Override
-    public Optional<Driver> getDriverById(int id) {
-        return Optional.empty();
+    public Optional<Driver> getDriverById(int id /* este es el id que envio*/) {
+
+        // Stream = itere drivers (posible reemplazo del for para recorrer la lista)
+        Driver driver = driverRepository.drivers.stream()
+                // busqueme donde encuentre el id que le mando
+                .filter(d -> d.getId() == id)
+                .findFirst()// lo que encuentre primero
+                .orElse(null); // sino nulo
+
+        return Optional.ofNullable(driver);
     }
 }
