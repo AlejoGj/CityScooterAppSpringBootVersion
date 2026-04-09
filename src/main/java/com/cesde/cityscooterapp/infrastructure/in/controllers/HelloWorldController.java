@@ -1,7 +1,6 @@
-package com.cesde.cityscooterapp.controllers;
+package com.cesde.cityscooterapp.infrastructure.in.controllers;
 
 
-import com.cesde.cityscooterapp.services.HelloWorldService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
