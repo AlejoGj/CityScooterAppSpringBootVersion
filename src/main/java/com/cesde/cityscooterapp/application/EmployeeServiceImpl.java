@@ -1,6 +1,7 @@
 package com.cesde.cityscooterapp.application;
 
 import com.cesde.cityscooterapp.application.inputport.EmployeeService;
+import com.cesde.cityscooterapp.application.outputports.EmployeePersistencePort;
 import com.cesde.cityscooterapp.domain.Employee;
 import com.cesde.cityscooterapp.infrastructure.out.adapter.EmployeeRepositoryImpl;
 import org.springframework.stereotype.Service;
@@ -10,15 +11,16 @@ import java.util.Optional;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
-    private final EmployeeRepositoryImpl employeeRepositoryImpl;
+    private final EmployeePersistencePort employeePersistencePort;
 
-    EmployeeServiceImpl(EmployeeRepositoryImpl employeeRepositoryImpl) {
-        this.employeeRepositoryImpl = employeeRepositoryImpl;
+    public EmployeeServiceImpl(EmployeePersistencePort employeePersistencePort) {
+        this.employeePersistencePort = employeePersistencePort;
     }
 
     @Override
     public Employee createEmployee(Employee employee) {
-        return null;
+
+        return employeePersistencePort.saveEmployee(employee);
     }
 
     @Override
@@ -28,6 +30,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Optional<Employee> getEmployeeById(int id) {
-        return Optional.empty();
+
+       Employee employee = employeePersistencePort.findEmployeeById(id).stream()
+               .filter(e -> e.getId() == id)
+               .findFirst()
+               .orElse(null);
+
+        return Optional.ofNullable(employee);
     }
 }
