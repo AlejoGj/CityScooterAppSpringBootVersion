@@ -3,7 +3,6 @@ package com.cesde.cityscooterapp.application;
 import com.cesde.cityscooterapp.application.inputport.EmployeeService;
 import com.cesde.cityscooterapp.application.outputports.EmployeePersistencePort;
 import com.cesde.cityscooterapp.domain.Employee;
-import com.cesde.cityscooterapp.infrastructure.out.adapter.EmployeeRepositoryImpl;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
