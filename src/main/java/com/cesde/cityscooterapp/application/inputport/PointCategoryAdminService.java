@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface PointCategoryAdminService {
 
-    void deletePointCategory(PointCategory pointCategory);
+    void deletePointCategoryById (int id);
     List<PointCategory> getAllPointCategory();
 
 

@@ -9,19 +9,19 @@ import org.springframework.web.bind.annotation.*;
 
 public class PointCategoryController {
 
-    private PointCategoryService pointCategoryService;
+    private final PointCategoryService pointCategoryService;
 
     public PointCategoryController(PointCategoryService pointCategoryService) {
         this.pointCategoryService = pointCategoryService;
     }
 
     @PostMapping("/create")
-    public PointCategory createPointCategory(@RequestBody PointCategory pointCategory){
+    PointCategory createPointCategory(@RequestBody PointCategory pointCategory){
         return pointCategoryService.createPointCategory(pointCategory);
     }
 
     @GetMapping("{id}")
-    public PointCategory getPointCategory(@PathVariable Long id){
+    PointCategory getPointCategory(@PathVariable Long id){
         return pointCategoryService.getPointCategoryById(id).orElse(null);
     }
 
